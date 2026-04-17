@@ -1,0 +1,622 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<title>Что мы не рассказали про гендерные различия в беларусской молодёжи</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<template id="__bundler_thumbnail" data-bg-color="#f3ece0">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#f3ece0"/>
+    <g transform="translate(240,260)">
+      <rect x="0"   y="0"   width="320" height="60" fill="#b7401c"/>
+      <rect x="0"   y="80"  width="200" height="60" fill="#1f3a5c"/>
+      <rect x="0"   y="160" width="420" height="60" fill="#b7401c"/>
+      <rect x="0"   y="240" width="260" height="60" fill="#1f3a5c"/>
+      <circle cx="640" cy="30"  r="22" fill="#b7401c"/>
+      <circle cx="720" cy="30"  r="22" fill="#1f3a5c"/>
+    </g>
+    <text x="240" y="620" font-family="Georgia,serif" font-size="44" font-style="italic" fill="#1a1712">Ж · М</text>
+  </svg>
+</template>
+<style>
+  :root{
+    --paper:#f3ece0;
+    --paper-2:#ebe2d2;
+    --ink:#1a1712;
+    --ink-2:#5a5348;
+    --rule:#cec3af;
+    --rule-2:#d9cfb9;
+    --W:#b7401c;   /* женщины — терракота */
+    --M:#1f3a5c;   /* мужчины — тёмно-синий */
+    --W-soft:#e7c2b0;
+    --M-soft:#b9c5d4;
+    --hl:#e8dfcc;
+    --maxw: 1180px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);font-family:"Inter",system-ui,sans-serif;-webkit-font-smoothing:antialiased;}
+  .page{max-width:var(--maxw);margin:0 auto;padding:72px 56px 120px;}
+  .kicker{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);}
+  h1.title{font-family:"Fraunces",serif;font-weight:600;font-size:64px;line-height:1.02;letter-spacing:-0.02em;margin:12px 0 18px;max-width:18ch;}
+  h1.title em{font-style:italic;font-weight:500;color:var(--W);}
+  .lede{font-family:"Fraunces",serif;font-weight:400;font-size:22px;line-height:1.45;max-width:62ch;color:var(--ink);margin:0 0 28px;}
+  .meta{display:flex;flex-wrap:wrap;gap:28px 44px;padding:18px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin-top:28px;}
+  .meta dt{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);margin-bottom:4px;}
+  .meta dd{margin:0;font-family:"Inter";font-size:14px;color:var(--ink);}
+
+  /* Legend block at top */
+  .legend{display:flex;gap:28px;align-items:center;margin:28px 0 0;}
+  .legend .sw{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--ink);}
+  .legend .dot{width:12px;height:12px;border-radius:50%}
+  .legend .dot.W{background:var(--W)} .legend .dot.M{background:var(--M)}
+
+  /* Chart card */
+  section.chart{margin-top:88px;padding-top:32px;border-top:1px solid var(--rule);}
+  section.chart .num{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.14em;color:var(--ink-2);text-transform:uppercase;}
+  section.chart h2{font-family:"Fraunces",serif;font-weight:600;font-size:36px;line-height:1.1;letter-spacing:-0.015em;margin:6px 0 10px;max-width:26ch;}
+  section.chart .dek{font-family:"Fraunces",serif;font-size:19px;line-height:1.5;color:var(--ink);max-width:64ch;font-style:italic;font-weight:400;margin:0 0 22px;}
+  section.chart .body{font-size:14.5px;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:18px 0 0;}
+  .chart-wrap{margin-top:18px;}
+  .stat{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--ink-2);letter-spacing:.02em;}
+  .axis{font-family:"JetBrains Mono",monospace;font-size:10.5px;fill:var(--ink-2);letter-spacing:.04em;}
+  .lbl{font-family:"Inter",sans-serif;font-size:13px;fill:var(--ink);}
+  .lbl.sm{font-size:12px;}
+  .val{font-family:"Fraunces",serif;font-size:15px;fill:var(--ink);font-weight:600;}
+  .val.big{font-size:22px;}
+  .rule{stroke:var(--rule);stroke-width:1}
+  .rule-soft{stroke:var(--rule-2);stroke-width:1;stroke-dasharray:2 3}
+
+  /* Footer */
+  footer{margin-top:120px;padding-top:28px;border-top:1px solid var(--rule);font-size:12.5px;color:var(--ink-2);line-height:1.6;display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap}
+  footer .colophon{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;}
+  footer p{margin:0 0 6px;max-width:60ch}
+
+  /* Pullquote between sections */
+  .pull{font-family:"Fraunces",serif;font-style:italic;font-weight:500;font-size:30px;line-height:1.25;color:var(--ink);max-width:28ch;margin:24px 0 0;letter-spacing:-0.01em;}
+  .pull span{color:var(--W)}
+
+  /* Small-multiples (chart 5 / chart 6) */
+  .multi{display:grid;grid-template-columns:repeat(2, 1fr);gap:40px 56px;}
+  @media (max-width:820px){
+    .page{padding:40px 22px 80px}
+    h1.title{font-size:44px}
+    .multi{grid-template-columns:1fr}
+  }
+
+  /* Chart 1 bars */
+  .bar-row{display:grid;grid-template-columns:220px 1fr 1fr;gap:18px;align-items:center;padding:14px 0;border-top:1px solid var(--rule-2);}
+  .bar-row:last-child{border-bottom:1px solid var(--rule-2);}
+  .bar-row .rlbl{font-size:14.5px;color:var(--ink);font-weight:500}
+  .bar-row .rlbl small{display:block;font-weight:400;color:var(--ink-2);font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.06em;margin-top:4px}
+  .bar-row.muted .rlbl{color:var(--ink-2)}
+  .bar-row.muted .bar-f{opacity:.45}
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ======= HEADER ======= -->
+  <header>
+    <div class="kicker">Belarusian Youth / Gender, 2025 · N ≈ 1 000</div>
+    <h1 class="title">Что мы <em>не&nbsp;рассказали</em> про гендерные различия в беларусской молодёжи</h1>
+    <p class="lede">В отчёте про молодёжь гендерный блок свёлся к&nbsp;планам на&nbsp;3–5&nbsp;лет. Но&nbsp;в&nbsp;данных нашлось ещё шесть устойчивых различий, которые туда не&nbsp;попали. Ниже&nbsp;— все семь, с&nbsp;величиной эффекта и&nbsp;значимостью на&nbsp;каждой карточке.</p>
+
+    <div class="legend">
+      <span class="sw"><span class="dot W"></span>Женщины</span>
+      <span class="sw"><span class="dot M"></span>Мужчины</span>
+      <span class="stat" style="margin-left:auto">Все сравнения — χ², p&nbsp;&lt;&nbsp;0,05 (взвешенные данные)</span>
+    </div>
+
+    <dl class="meta">
+      <div><dt>Метод</dt><dd>Хи-квадрат Пирсона</dd></div>
+      <div><dt>Данные</dt><dd>Взвешенные</dd></div>
+      <div><dt>Порог</dt><dd>p &lt; 0,05</dd></div>
+      <div><dt>Пунктов</dt><dd>6 + бонус</dd></div>
+      <div><dt>Читать как</dt><dd>«Ж&nbsp;%&nbsp;— М&nbsp;%»</dd></div>
+    </dl>
+  </header>
+
+  <!-- placeholder for charts -->
+  <div id="charts"></div>
+
+  <footer>
+    <div>
+      <p><span class="colophon">Источник</span><br/>Опрос беларусской молодёжи, 2025. Все различия проверены на&nbsp;взвешенных данных критерием χ² Пирсона. В&nbsp;подписях к&nbsp;графикам указаны значение статистики и&nbsp;p-value.</p>
+    </div>
+    <div>
+      <p class="colophon">Вёрстка — данные как&nbsp;есть, без&nbsp;3D, без&nbsp;круговых, без&nbsp;двойных шкал.</p>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+/* Render all 7 charts into #charts */
+(function(){
+  const ROOT = document.getElementById('charts');
+
+  // Palette pulled from CSS vars
+  const css = getComputedStyle(document.documentElement);
+  const C = {
+    W:  css.getPropertyValue('--W').trim(),
+    M:  css.getPropertyValue('--M').trim(),
+    Ws: css.getPropertyValue('--W-soft').trim(),
+    Ms: css.getPropertyValue('--M-soft').trim(),
+    ink: css.getPropertyValue('--ink').trim(),
+    ink2: css.getPropertyValue('--ink-2').trim(),
+    rule: css.getPropertyValue('--rule').trim(),
+    rule2: css.getPropertyValue('--rule-2').trim(),
+    paper: css.getPropertyValue('--paper').trim(),
+    paper2: css.getPropertyValue('--paper-2').trim(),
+    hl: css.getPropertyValue('--hl').trim(),
+  };
+
+  // Helpers ----------------------------------------------------------------
+  function el(tag, attrs={}, ...kids){
+    const n = document.createElementNS('http://www.w3.org/2000/svg', tag);
+    for (const k in attrs) n.setAttribute(k, attrs[k]);
+    for (const k of kids) if(k!=null) n.appendChild(typeof k==='string'?document.createTextNode(k):k);
+    return n;
+  }
+  function h(tag, attrs={}, ...kids){
+    const n = document.createElement(tag);
+    for (const k in attrs) {
+      if (k==='class') n.className = attrs[k];
+      else if (k==='html') n.innerHTML = attrs[k];
+      else n.setAttribute(k, attrs[k]);
+    }
+    for (const k of kids) if(k!=null) n.appendChild(typeof k==='string'?document.createTextNode(k):k);
+    return n;
+  }
+  function section(n, title, dek, stat, bodyHtml){
+    const s = h('section', {class:'chart'});
+    s.appendChild(h('div', {class:'num'}, `№${n.toString().padStart(2,'0')} · из 07`));
+    s.appendChild(h('h2', {html: title}));
+    s.appendChild(h('p', {class:'dek'}, dek));
+    const wrap = h('div', {class:'chart-wrap'});
+    s.appendChild(wrap);
+    if (stat)  s.appendChild(h('p', {class:'stat', style:'margin:18px 0 0'}, stat));
+    if (bodyHtml) s.appendChild(h('p', {class:'body', html: bodyHtml}));
+    ROOT.appendChild(s);
+    return wrap;
+  }
+
+  // =======================================================================
+  // Chart 1 — Anxiety: money only
+  // Compare 6 topics. Three economic (big gap, shown in color) + three non-economic (equal, muted).
+  // =======================================================================
+  function chart1(){
+    const wrap = section(1,
+      'Тревожность — только про деньги',
+      '«Женщины тревожнее» — миф. Разрыв есть только на экономических темах; на экзистенциальных и политических страхах его нет.',
+      null,
+      `Невозможность купить или арендовать жильё сильно тревожит <b>48%</b> женщин и <b>30%</b> мужчин (χ²&nbsp;=&nbsp;20,17, p&nbsp;&lt;&nbsp;0,001). Рост цен и карьерные перспективы — тот&nbsp;же паттерн. А страх произвола, экзистенциальные переживания и тревога за будущее страны — одинаковы у всех.`
+    );
+
+    const rows = [
+      {lbl:'Рост цен',                            W:89, M:71, note:'p < 0,001', hot:true},
+      {lbl:'Купить / арендовать жильё',           W:48, M:30, note:'χ² = 20,17 · p < 0,001', hot:true},
+      {lbl:'Карьерные перспективы',               W:70, M:52, note:'p < 0,001', hot:true},
+      {lbl:'Страх произвола властей',             W:62, M:60, note:'n.s.',      hot:false},
+      {lbl:'Экзистенциальные переживания',        W:44, M:43, note:'n.s.',      hot:false},
+      {lbl:'Будущее страны',                      W:73, M:72, note:'n.s.',      hot:false},
+    ];
+
+    // Custom grid: label | W bar | M bar, bars share a 0–100% scale
+    const grid = h('div', {});
+    // header
+    const head = h('div', {class:'bar-row', style:'border-top:none;padding:6px 0 10px;font-family:JetBrains Mono,monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)'});
+    head.appendChild(h('div', {class:'rlbl', style:'color:var(--ink-2);font-weight:400'}, 'Тема тревоги'));
+    head.appendChild(h('div', {}, 'Женщины, % сильно тревожит →'));
+    head.appendChild(h('div', {}, 'Мужчины, % сильно тревожит →'));
+    grid.appendChild(head);
+
+    rows.forEach(r=>{
+      const row = h('div', {class: 'bar-row' + (r.hot?'':' muted')});
+      const lbl = h('div', {class:'rlbl'}, r.lbl);
+      lbl.appendChild(h('small', {}, r.note));
+      row.appendChild(lbl);
+
+      // Each bar cell is an inline SVG from 0–100
+      [['W', C.W, r.W],['M', C.M, r.M]].forEach(([side, color, v])=>{
+        const svg = el('svg', {viewBox:'0 0 300 28', width:'100%', height:'28', preserveAspectRatio:'none', style:'display:block'});
+        // track
+        svg.appendChild(el('rect',{x:0,y:11,width:300,height:6,fill:C.rule2}));
+        // fill
+        svg.appendChild(el('rect',{x:0,y:9,width: 3*v, height:10, fill: color, class:'bar-f'}));
+        // value text (preserveAspectRatio none stretches it, so use HTML overlay instead)
+        const cell = h('div', {style:'position:relative'});
+        cell.appendChild(svg);
+        cell.appendChild(h('div', {style:`position:absolute;top:-2px;left:${v}%;transform:translateX(4px);font-family:Fraunces,serif;font-size:16px;font-weight:600;color:${color};`}, v+'%'));
+        row.appendChild(cell);
+      });
+      grid.appendChild(row);
+    });
+
+    wrap.appendChild(grid);
+
+    // summary strip
+    const strip = h('div', {style:'display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:28px;padding-top:18px;border-top:1px dashed var(--rule)'});
+    strip.appendChild(h('div',{html:`<div class="stat" style="margin-bottom:6px">Средний разрыв Ж−М</div><div style="font-family:Fraunces,serif;font-size:40px;font-weight:600;color:${C.W};line-height:1">+18&thinsp;п.п.</div><div class="stat">на экономических темах</div>`}));
+    strip.appendChild(h('div',{html:`<div class="stat" style="margin-bottom:6px">Средний разрыв Ж−М</div><div style="font-family:Fraunces,serif;font-size:40px;font-weight:600;color:${C.ink2};line-height:1">+1&thinsp;п.п.</div><div class="stat">на политических и экзистенциальных</div>`}));
+    wrap.appendChild(strip);
+  }
+
+  // =======================================================================
+  // Chart 2 — Institutional trust: dumbbell
+  // =======================================================================
+  function chart2(){
+    const wrap = section(2,
+      'Женщины больше доверяют институтам — всем',
+      'На институциональных осях женщины стабильно дальше мужчин. На ближнем круге и медиа — равенство.',
+      'χ² (НГО) = 16,67 · p < 0,001.  Остальные — p < 0,05.',
+      `Доверие к близким, друзьям, медиа — одинаковое. А вот с институциональной средой — с&nbsp;НГО, судом, международными организациями и даже органами власти — мужчины держат большую дистанцию. Это разница <b>про институциональность вообще</b>, а не про конкретный институт.`
+    );
+
+    const data = [
+      {lbl:'НГО',                            W:74, M:53, hot:true,  note:'χ²=16,67 · p<0,001'},
+      {lbl:'Правовая система',               W:78, M:63, hot:true,  note:'p<0,001'},
+      {lbl:'Международные организации',      W:77, M:60, hot:true,  note:'p<0,001'},
+      {lbl:'Органы власти',                  W:71, M:56, hot:true,  note:'p<0,001'},
+      {lbl:'Независимые медиа',              W:61, M:59, hot:false, note:'n.s.'},
+      {lbl:'Семья / близкий круг',           W:92, M:91, hot:false, note:'n.s.'},
+    ];
+
+    const W = 900, pad = {t:36,r:48,b:36,l:260};
+    const rowH = 46;
+    const H = pad.t + pad.b + data.length*rowH;
+    const xFor = v => pad.l + (W - pad.l - pad.r) * v/100;
+
+    const svg = el('svg', {viewBox:`0 0 ${W} ${H}`, width:'100%', role:'img'});
+    // grid
+    [30,40,50,60,70,80,90,100].forEach(t=>{
+      svg.appendChild(el('line', {x1:xFor(t),x2:xFor(t),y1:pad.t-6,y2:H-pad.b, stroke:C.rule2, 'stroke-dasharray':'2 3'}));
+      svg.appendChild(el('text', {x:xFor(t), y:pad.t-12, 'text-anchor':'middle', class:'axis'}, t+'%'));
+    });
+    // axis rule
+    svg.appendChild(el('line', {x1:pad.l, x2:W-pad.r, y1:H-pad.b+6, y2:H-pad.b+6, class:'rule'}));
+
+    data.forEach((d,i)=>{
+      const y = pad.t + i*rowH + rowH/2;
+      // label
+      const lt = el('text', {x:pad.l-18, y:y+5, 'text-anchor':'end', class:'lbl'}, d.lbl);
+      if (!d.hot) lt.setAttribute('fill', C.ink2);
+      svg.appendChild(lt);
+      svg.appendChild(el('text', {x:pad.l-18, y:y+21, 'text-anchor':'end', 'font-family':'JetBrains Mono,monospace','font-size':'10', fill:C.ink2}, d.note));
+
+      // connector
+      const x1 = Math.min(xFor(d.W), xFor(d.M));
+      const x2 = Math.max(xFor(d.W), xFor(d.M));
+      svg.appendChild(el('line',{x1, x2, y1:y, y2:y, stroke: d.hot? C.ink : C.rule, 'stroke-width': d.hot?1.5:1}));
+
+      // dots
+      const rW = d.hot?8:6, rM = d.hot?8:6;
+      svg.appendChild(el('circle',{cx:xFor(d.M), cy:y, r:rM, fill:C.M, opacity: d.hot?1:.55}));
+      svg.appendChild(el('circle',{cx:xFor(d.W), cy:y, r:rW, fill:C.W, opacity: d.hot?1:.55}));
+
+      // values
+      const vW = el('text',{x:xFor(d.W)+ (d.W>d.M?14:-14), y:y+5, 'text-anchor': d.W>d.M?'start':'end', class:'val'}, d.W+'%');
+      vW.setAttribute('fill', C.W); svg.appendChild(vW);
+      const vM = el('text',{x:xFor(d.M)+ (d.M>d.W?14:-14), y:y+5, 'text-anchor': d.M>d.W?'start':'end', class:'val'}, d.M+'%');
+      vM.setAttribute('fill', C.M); svg.appendChild(vM);
+
+      // gap pill for hot rows
+      if (d.hot) {
+        const gap = d.W - d.M;
+        svg.appendChild(el('text',{x:(xFor(d.W)+xFor(d.M))/2, y:y-12, 'text-anchor':'middle','font-family':'JetBrains Mono,monospace','font-size':'10',fill:C.ink}, `Δ ${gap>0?'+':''}${gap} п.п.`));
+      }
+    });
+
+    wrap.appendChild(svg);
+  }
+
+  // =======================================================================
+  // Chart 3 — European vector
+  // Two stacked bars: "closer to Europe" and "closer to Russia", split W/M
+  // =======================================================================
+  function chart3(){
+    const wrap = section(3,
+      'Европейский вектор — женский.<br/>Российский — одинаковый',
+      'Не «прозападные девушки vs пророссийские парни». Женщины чаще удерживают оба вектора одновременно; у мужчин проседает именно европейский.',
+      'Европейский: χ² = 20,18 · p < 0,001.  Российский: p = 0,12 (различий нет).',
+      `С&nbsp;утверждением «Беларусь ближе к Европе» согласны <b>64%</b>&nbsp;женщин и <b>40%</b>&nbsp;мужчин. А «Беларусь ближе к России» — одинаково часто у&nbsp;всех. Разрыв асимметричен: женщины не «против России», они «и за то, и за другое».`
+    );
+
+    const W = 900, H = 360, pad={t:56,r:40,b:48,l:200};
+    const svg = el('svg',{viewBox:`0 0 ${W} ${H}`, width:'100%'});
+
+    // two groups
+    const groups = [
+      {key:'Беларусь ближе к Европе',  W:64, M:40, hot:true,  note:'χ² = 20,18 · p < 0,001'},
+      {key:'Беларусь ближе к России',  W:48, M:46, hot:false, note:'p = 0,12 (n.s.)'},
+    ];
+    const gH = 90, gap = 50;
+
+    // x scale 0-100
+    const xFor = v => pad.l + (W-pad.l-pad.r) * v/100;
+    [0,25,50,75,100].forEach(t=>{
+      svg.appendChild(el('line',{x1:xFor(t),x2:xFor(t),y1:pad.t-16,y2:H-pad.b+6,stroke:C.rule2,'stroke-dasharray':'2 3'}));
+      svg.appendChild(el('text',{x:xFor(t),y:pad.t-22,'text-anchor':'middle',class:'axis'}, t+'%'));
+    });
+
+    groups.forEach((g,i)=>{
+      const y = pad.t + i*(gH+gap);
+      svg.appendChild(el('text',{x:pad.l-18,y:y+20,'text-anchor':'end','font-family':'Fraunces,serif','font-size':'17','font-weight':'500',fill:C.ink}, g.key));
+      svg.appendChild(el('text',{x:pad.l-18,y:y+38,'text-anchor':'end','font-family':'JetBrains Mono,monospace','font-size':'10',fill:C.ink2}, g.note));
+
+      // women bar
+      svg.appendChild(el('rect',{x:pad.l,y:y, width: xFor(g.W)-pad.l, height:32, fill: g.hot?C.W:C.Ws}));
+      svg.appendChild(el('text',{x:xFor(g.W)+10,y:y+22,class:'val',fill: g.hot?C.W:C.ink2}, g.W+'%'));
+      svg.appendChild(el('text',{x:pad.l+8,y:y+20,'font-family':'JetBrains Mono,monospace','font-size':'10',fill:'#fff',opacity: g.hot?.9:0}, 'Ж'));
+
+      // men bar
+      svg.appendChild(el('rect',{x:pad.l,y:y+42,width: xFor(g.M)-pad.l, height:32, fill: g.hot?C.M:C.Ms}));
+      svg.appendChild(el('text',{x:xFor(g.M)+10,y:y+64,class:'val',fill: g.hot?C.M:C.ink2}, g.M+'%'));
+      svg.appendChild(el('text',{x:pad.l+8,y:y+62,'font-family':'JetBrains Mono,monospace','font-size':'10',fill:'#fff',opacity: g.hot?.9:0}, 'М'));
+
+      // gap annotation for hot
+      if (g.hot) {
+        const xMid = (xFor(g.W)+xFor(g.M))/2;
+        svg.appendChild(el('line',{x1:xFor(g.M),x2:xFor(g.W),y1:y+84,y2:y+84,stroke:C.ink,'stroke-width':1}));
+        svg.appendChild(el('line',{x1:xFor(g.M),x2:xFor(g.M),y1:y+80,y2:y+88,stroke:C.ink,'stroke-width':1}));
+        svg.appendChild(el('line',{x1:xFor(g.W),x2:xFor(g.W),y1:y+80,y2:y+88,stroke:C.ink,'stroke-width':1}));
+        svg.appendChild(el('text',{x:xMid,y:y+100,'text-anchor':'middle','font-family':'JetBrains Mono,monospace','font-size':'10.5',fill:C.ink}, `Δ ${g.W-g.M} п.п. · разрыв значимый`));
+      } else {
+        const xMid = (xFor(g.W)+xFor(g.M))/2 || xFor(g.W);
+        svg.appendChild(el('text',{x: Math.max(xFor(g.W),xFor(g.M)) - 60,y:y+90,'font-family':'JetBrains Mono,monospace','font-size':'10.5',fill:C.ink2}, `Δ ${g.W-g.M} п.п. · внутри погрешности`));
+      }
+    });
+
+    wrap.appendChild(svg);
+  }
+
+  // =======================================================================
+  // Chart 4 — Fatalism vs belief in own effort
+  // 2×2 style: two statements. For each: W bar + M bar.
+  // =======================================================================
+  function chart4(){
+    const wrap = section(4,
+      'Фатализм у женщин выше.<br/>Вера в собственные усилия — одинаковая',
+      'Парадокс: стараться в своём контуре — да, претендовать на макроуровень — нет.',
+      'Фатализм: χ² = 14,29 · p = 0,003.  Усилия: n.s.',
+      `Женщины чаще соглашаются, что «от меня ничего не зависит». Но это&nbsp;не про собственную агентность — здесь статистика равна. Это про веру в&nbsp;возможность что-то изменить <b>снаружи</b>.`
+    );
+
+    const rows = [
+      {lbl:'«От меня ничего не зависит,\nлучше жить сегодняшним днём»', W:70, M:51, hot:true,  note:'χ² = 14,29 · p = 0,003'},
+      {lbl:'«Упорный труд приводит\nк успеху»',                         W:74, M:72, hot:false, note:'n.s.'},
+    ];
+
+    const W=900, H=260, pad={t:40,r:200,b:30,l:280};
+    const svg = el('svg',{viewBox:`0 0 ${W} ${H}`, width:'100%'});
+
+    const rowH = (H-pad.t-pad.b)/rows.length;
+    const xFor = v => pad.l + (W-pad.l-pad.r)*v/100;
+
+    // grid
+    [0,25,50,75,100].forEach(t=>{
+      svg.appendChild(el('line',{x1:xFor(t),x2:xFor(t),y1:pad.t-14,y2:H-pad.b,stroke:C.rule2,'stroke-dasharray':'2 3'}));
+      svg.appendChild(el('text',{x:xFor(t),y:pad.t-20,'text-anchor':'middle',class:'axis'}, t+'%'));
+    });
+
+    rows.forEach((r,i)=>{
+      const y0 = pad.t + i*rowH + 8;
+      // label
+      r.lbl.split('\n').forEach((line, li)=>{
+        svg.appendChild(el('text',{x:pad.l-22,y:y0+12+li*20,'text-anchor':'end','font-family':'Fraunces,serif','font-size':'17','font-weight':'500','font-style':'italic',fill:C.ink}, line));
+      });
+      svg.appendChild(el('text',{x:pad.l-22,y:y0+12+r.lbl.split('\n').length*20+4,'text-anchor':'end','font-family':'JetBrains Mono,monospace','font-size':'10',fill:C.ink2}, r.note));
+
+      // bars
+      const barH = 22;
+      const color = r.hot ? {W:C.W, M:C.M} : {W:C.Ws, M:C.Ms};
+      svg.appendChild(el('rect',{x:pad.l,y:y0,    width: xFor(r.W)-pad.l, height:barH, fill: color.W}));
+      svg.appendChild(el('rect',{x:pad.l,y:y0+barH+6,width: xFor(r.M)-pad.l, height:barH, fill: color.M}));
+
+      svg.appendChild(el('text',{x:xFor(r.W)+10,y:y0+16,class:'val',fill: r.hot?C.W:C.ink2}, 'Ж · '+r.W+'%'));
+      svg.appendChild(el('text',{x:xFor(r.M)+10,y:y0+barH+6+16,class:'val',fill: r.hot?C.M:C.ink2}, 'М · '+r.M+'%'));
+    });
+
+    wrap.appendChild(svg);
+
+    // takeaway pullquote
+    wrap.appendChild(h('div',{class:'pull'}, 'Макроуровень — ',h('span',{},'закрыт.'),' Микроуровень — нет.'));
+  }
+
+  // =======================================================================
+  // Chart 5 — Coping strategies (small multiples, each = one behavior)
+  // =======================================================================
+  function chart5(){
+    const wrap = section(5,
+      'Копинг расходится по осям «уход» и «игра»',
+      'Женщины — чаще избегают политики, уходят в соцсети, мечтают об отъезде. Мужчины — чаще в видеоиграх.',
+      'Избегание политики: χ² = 15,99 · p = 0,003.  Видеоигры: χ² = 11,91 · p = 0,018.  Отъезд: p = 0,009.',
+      `Поведенческие стратегии справляться со стрессом. «Часто / регулярно» — по шкале опроса. У&nbsp;мужчин и&nbsp;женщин разные способы разгрузки, а&nbsp;не&nbsp;разный уровень.`
+    );
+
+    const items = [
+      {lbl:'Избегание разговоров о политике', W:46, M:32, dir:'W', note:'χ² = 15,99'},
+      {lbl:'Уход в соцсети',                  W:45, M:36, dir:'W', note:'p < 0,05'},
+      {lbl:'Мечты об отъезде',                W:38, M:28, dir:'W', note:'p = 0,009'},
+      {lbl:'Видеоигры',                       W:35, M:40, dir:'M', note:'χ² = 11,91'},
+    ];
+
+    const grid = h('div', {class:'multi'});
+    items.forEach(it=>{
+      const panel = h('div',{});
+      panel.appendChild(h('div',{style:'display:flex;justify-content:space-between;align-items:baseline;gap:12px;'},
+        h('div',{style:'font-family:Fraunces,serif;font-size:20px;font-weight:500;letter-spacing:-.01em'}, it.lbl),
+        h('div',{class:'stat'}, it.note)
+      ));
+
+      // Draw a mini dumbbell on a 0-60 scale
+      const svg = el('svg',{viewBox:'0 0 400 90', width:'100%', style:'margin-top:10px'});
+      const pad = {l:20,r:60,t:28,b:22};
+      const xFor = v => pad.l + (400-pad.l-pad.r) * v/60;
+      // axis
+      [0,20,40,60].forEach(t=>{
+        svg.appendChild(el('line',{x1:xFor(t),x2:xFor(t),y1:pad.t-6,y2:90-pad.b,stroke:C.rule2,'stroke-dasharray':'2 3'}));
+        svg.appendChild(el('text',{x:xFor(t),y:pad.t-10,'text-anchor':'middle',class:'axis'}, t+'%'));
+      });
+      svg.appendChild(el('line',{x1:pad.l,x2:400-pad.r,y1:55,y2:55,stroke:C.rule,'stroke-width':1}));
+
+      // dumbbell
+      const y = 45;
+      const xW = xFor(it.W), xM = xFor(it.M);
+      svg.appendChild(el('line',{x1:Math.min(xW,xM),x2:Math.max(xW,xM),y1:y,y2:y,stroke:C.ink,'stroke-width':1.5}));
+      svg.appendChild(el('circle',{cx:xW,cy:y,r:9,fill:C.W, stroke: it.dir==='W'?C.ink:'none','stroke-width':1.5}));
+      svg.appendChild(el('circle',{cx:xM,cy:y,r:9,fill:C.M, stroke: it.dir==='M'?C.ink:'none','stroke-width':1.5}));
+
+      // values
+      svg.appendChild(el('text',{x:xW+(xW>xM?14:-14), y:y+5,'text-anchor':xW>xM?'start':'end',class:'val',fill:C.W}, it.W+'%'));
+      svg.appendChild(el('text',{x:xM+(xM>xW?14:-14), y:y+5,'text-anchor':xM>xW?'start':'end',class:'val',fill:C.M}, it.M+'%'));
+
+      // direction arrow above
+      const bigger = it.dir==='W' ? 'Ж больше на '+(it.W-it.M)+' п.п.' : 'М больше на '+(it.M-it.W)+' п.п.';
+      svg.appendChild(el('text',{x:pad.l, y:80,'font-family':'JetBrains Mono,monospace','font-size':'10.5',fill: it.dir==='W'?C.W:C.M}, bigger));
+
+      panel.appendChild(svg);
+      grid.appendChild(panel);
+    });
+    wrap.appendChild(grid);
+  }
+
+  // =======================================================================
+  // Chart 6 — Mission vs autonomy (diverging-ish)
+  // Three life statements. Flipped stereotype.
+  // =======================================================================
+  function chart6(){
+    const wrap = section(6,
+      'Общественная миссия — мужская.<br/>Автономия — женская',
+      'Стереотип «женщина социальна, мужчина индивидуалист» в данных переворачивается.',
+      'χ² (оставаться собой) = 16,88 · p = 0,002.   χ² (общественное) = 14,47 · p = 0,006.',
+      `Женщины чаще выбирают «быть собой, несмотря на неодобрение» и&nbsp;«жить ради себя и&nbsp;близких». Мужчины чаще выбирают «делать важное для общества». Это&nbsp;один из&nbsp;самых контринтуитивных результатов опроса.`
+    );
+
+    const items = [
+      {lbl:'«Оставаться собой, даже если не одобряют»', W:78, M:64, owner:'W', note:'χ² = 16,88 · p = 0,002'},
+      {lbl:'«Жить ради себя и близких»',                W:66, M:51, owner:'W', note:'p < 0,05'},
+      {lbl:'«Делать важное для общества»',              W:27, M:35, owner:'M', note:'χ² = 14,47 · p = 0,006'},
+    ];
+
+    // Draw a centered diverging layout: labels center, W bar extends left, M bar extends right
+    const W=920, H=340, pad={t:20,b:28,center: 460}; // center x
+    const svg = el('svg',{viewBox:`0 0 ${W} ${H}`, width:'100%'});
+    const rowH = (H-pad.t-pad.b)/items.length;
+    const scale = 4; // px per percent
+
+    // axis ticks
+    svg.appendChild(el('line',{x1:pad.center,x2:pad.center,y1:pad.t-4,y2:H-pad.b+4,stroke:C.ink,'stroke-width':1}));
+    [25,50,75,100].forEach(t=>{
+      svg.appendChild(el('line',{x1:pad.center-t*scale,x2:pad.center-t*scale,y1:pad.t-4,y2:H-pad.b+4,stroke:C.rule2,'stroke-dasharray':'2 3'}));
+      svg.appendChild(el('line',{x1:pad.center+t*scale,x2:pad.center+t*scale,y1:pad.t-4,y2:H-pad.b+4,stroke:C.rule2,'stroke-dasharray':'2 3'}));
+      svg.appendChild(el('text',{x:pad.center-t*scale,y:H-8,'text-anchor':'middle',class:'axis'}, t+'%'));
+      svg.appendChild(el('text',{x:pad.center+t*scale,y:H-8,'text-anchor':'middle',class:'axis'}, t+'%'));
+    });
+    // side captions
+    svg.appendChild(el('text',{x:pad.center-20,y:14,'text-anchor':'end','font-family':'JetBrains Mono,monospace','font-size':'10.5','letter-spacing':'.1em',fill:C.W}, '← ЖЕНЩИНЫ'));
+    svg.appendChild(el('text',{x:pad.center+20,y:14,'text-anchor':'start','font-family':'JetBrains Mono,monospace','font-size':'10.5','letter-spacing':'.1em',fill:C.M}, 'МУЖЧИНЫ →'));
+
+    items.forEach((it,i)=>{
+      const y = pad.t + i*rowH + 30;
+      const bH = 30;
+      const wOwner = it.owner==='W';
+      // Women bar left
+      svg.appendChild(el('rect',{x:pad.center - it.W*scale, y, width:it.W*scale, height:bH, fill: wOwner? C.W : C.Ws}));
+      // Men bar right
+      svg.appendChild(el('rect',{x:pad.center, y, width:it.M*scale, height:bH, fill: wOwner? C.Ms : C.M}));
+
+      // values
+      svg.appendChild(el('text',{x:pad.center - it.W*scale - 10, y:y+20,'text-anchor':'end',class:'val',fill:C.W}, it.W+'%'));
+      svg.appendChild(el('text',{x:pad.center + it.M*scale + 10, y:y+20,'text-anchor':'start',class:'val',fill:C.M}, it.M+'%'));
+
+      // center label
+      svg.appendChild(el('text',{x:pad.center, y:y-6,'text-anchor':'middle','font-family':'Fraunces,serif','font-size':'16','font-weight':'500','font-style':'italic',fill:C.ink}, it.lbl));
+      svg.appendChild(el('text',{x:pad.center, y:y+bH+16,'text-anchor':'middle','font-family':'JetBrains Mono,monospace','font-size':'10',fill:C.ink2}, it.note));
+    });
+
+    wrap.appendChild(svg);
+  }
+
+  // =======================================================================
+  // Bonus — Learning topics (symmetric bars, interest by topic)
+  // =======================================================================
+  function chartBonus(){
+    const wrap = section(7,
+      'Бонус: темы обучения',
+      'Творчество, дизайн и психология — женские интересы. Беларусская культура — единственная тема, где мужчины лидируют.',
+      'Творчество/дизайн: p < 0,001.  Психология: p < 0,01.  Беларусская культура: p = 0,002.',
+      `Этот блок — не&nbsp;про стресс и&nbsp;не&nbsp;про политику. Это чистые интересы в&nbsp;обучении. Последний пункт — <b>беларусская культура</b> — один из&nbsp;самых неожиданных результатов опроса.`
+    );
+
+    const items = [
+      {lbl:'Творчество и дизайн', W:34, M:20, owner:'W', note:'p < 0,001'},
+      {lbl:'Психология',          W:26, M:16, owner:'W', note:'p < 0,01'},
+      {lbl:'Беларусская культура',W: 8, M:18, owner:'M', note:'p = 0,002'},
+    ];
+
+    const W=900, H=310, pad={t:50,r:60,b:40,l:240};
+    const svg = el('svg',{viewBox:`0 0 ${W} ${H}`, width:'100%'});
+
+    const rowH = (H-pad.t-pad.b)/items.length;
+    const xFor = v => pad.l + (W-pad.l-pad.r)*v/40; // max ~40%
+
+    [0,10,20,30,40].forEach(t=>{
+      svg.appendChild(el('line',{x1:xFor(t),x2:xFor(t),y1:pad.t-14,y2:H-pad.b,stroke:C.rule2,'stroke-dasharray':'2 3'}));
+      svg.appendChild(el('text',{x:xFor(t),y:pad.t-20,'text-anchor':'middle',class:'axis'}, t+'%'));
+    });
+
+    // header row
+    svg.appendChild(el('text',{x:pad.l-22,y:pad.t-20,'text-anchor':'end',class:'axis'}, 'ТЕМА'));
+
+    items.forEach((it,i)=>{
+      const y0 = pad.t + i*rowH + 8;
+      svg.appendChild(el('text',{x:pad.l-22,y:y0+14,'text-anchor':'end','font-family':'Fraunces,serif','font-size':'18','font-weight':'500',fill:C.ink}, it.lbl));
+      svg.appendChild(el('text',{x:pad.l-22,y:y0+32,'text-anchor':'end','font-family':'JetBrains Mono,monospace','font-size':'10',fill:C.ink2}, it.note));
+
+      const barH = 20;
+      svg.appendChild(el('rect',{x:pad.l, y:y0,         width:xFor(it.W)-pad.l, height:barH, fill: it.owner==='W'?C.W:C.Ws}));
+      svg.appendChild(el('rect',{x:pad.l, y:y0+barH+6,  width:xFor(it.M)-pad.l, height:barH, fill: it.owner==='M'?C.M:C.Ms}));
+
+      svg.appendChild(el('text',{x:xFor(it.W)+10,y:y0+15,class:'val',fill:C.W}, 'Ж · '+it.W+'%'));
+      svg.appendChild(el('text',{x:xFor(it.M)+10,y:y0+barH+6+15,class:'val',fill:C.M}, 'М · '+it.M+'%'));
+
+      // owner mark
+      const flip = it.owner==='M';
+      svg.appendChild(el('text',{x:pad.l+4, y:y0+14,'font-family':'JetBrains Mono,monospace','font-size':'10',fill:'#fff','opacity':.85}, flip?' ':'Ж+'));
+      svg.appendChild(el('text',{x:pad.l+4, y:y0+barH+6+14,'font-family':'JetBrains Mono,monospace','font-size':'10',fill:'#fff','opacity':.85}, flip?'М+':' '));
+    });
+
+    wrap.appendChild(svg);
+
+    // kicker summary
+    wrap.appendChild(h('div',{class:'pull', style:'max-width:36ch'},
+      'Единственная тема, где ',h('span',{style:'color:'+C.M},'мужчины впереди'),' — беларусская культура.'));
+  }
+
+  // Render --------------------------------------------------------------
+  chart1();
+  chart2();
+  chart3();
+  chart4();
+  chart5();
+  chart6();
+  chartBonus();
+
+  // Final takeaway
+  const takeaway = h('section', {class:'chart'});
+  takeaway.appendChild(h('div', {class:'num'}, 'ИТОГ'));
+  takeaway.appendChild(h('h2', {}, 'Одна программа — два очень разных пользователя'));
+  takeaway.appendChild(h('p', {class:'dek'}, '«Молодёжь» — не монолит. Женщины: экономическая тревога, институциональное доверие, европейский вектор, фатализм на макроуровне, автономия. Мужчины: дистанция от институтов, видеоигры как копинг, общественная миссия, интерес к беларусской культуре.'));
+  takeaway.appendChild(h('p', {class:'body'}, 'Одна и та же программа поддержки будет работать на парней и девушек очень по-разному.'));
+  ROOT.appendChild(takeaway);
+
+})();
+
+</script>
+</body>
+</html>
